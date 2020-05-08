@@ -12,13 +12,13 @@ sync:
   validation:
     jobs:
       sync-validate-compilation:
-        machine: ubuntu-1910
+        machine: grabl-ubuntu-1910-v20200508
         type: foreground
         script: |
           bazel run @graknlabs_build_tools//sync-dependencies-bazel $GRABL_DEPENDENCIES_NEW         # graql@abc123 protocol@bcd234
           bazel build //...
       sync-validate-correctness:
-        machine: ubuntu-1910
+        machine: grabl-ubuntu-1910-v20200508
         type: foreground
         script: |
           bazel run @graknlabs_build_tools//sync-dependencies-bazel $GRABL_DEPENDENCIES_NEW         # graql@abc123 protocol@bcd234
@@ -28,7 +28,7 @@ sync:
       - sync-validate-correctness
   update:
     job:
-      machine: ubuntu-1910
+      machine: grabl-ubuntu-1910-v20200508
       type: foreground
       script: |
         bazel run @graknlabs_build_tools//sync-dependencies-bazel $GRABL_DEPENDENCIES_NEW         # graql@abc123 protocol@bcd234
@@ -38,7 +38,7 @@ build:
   quality:
     job:
       dependency-analysis:
-        machine: ubuntu-1910
+        machine: grabl-ubuntu-1910-v20200508
         type: foreground
         script: |
           echo "workflow quality: dependency-analysis"
@@ -46,7 +46,7 @@ build:
   correctness:
     job:
       build:
-        machine: ubuntu-1910
+        machine: grabl-ubuntu-1910-v20200508
         type: foreground
         script: |
           echo "workflow correctness: build"
@@ -54,7 +54,7 @@ build:
   performance:
     jobs:
       run-grakn-1:
-        machine: ubuntu-1910
+        machine: grabl-ubuntu-1910-v20200508
         type: background
         timeout: "1800"
         script: |
@@ -74,7 +74,7 @@ build:
           # cd ./dist/grakn-core-all-linux/
           # ./grakn server start
       run-grakn-2:
-        machine: ubuntu-1910
+        machine: grabl-ubuntu-1910-v20200508
         type: background
         script: |
           echo "workflow performance: run-grakn-2"
@@ -82,7 +82,7 @@ build:
           # tar -xf ./bazel-bin/grakn-core-all-linux.targz -C ./dist/
           # ./grakn server start join $GRABL_PERFORMANCE_RUN_GRAKN_1_ADDRESS
       run-grakn-3:
-        machine: ubuntu-1910
+        machine: grabl-ubuntu-1910-v20200508
         type: background
         script: |
           echo "workflow performance: run-grakn-3"
@@ -91,7 +91,7 @@ build:
           # cd ./dist/
           # ./grakn server start join $GRABL_PERFORMANCE_RUN_GRAKN_1_ADDRESS
       test-performance-big:
-        machine: ubuntu-1910
+        machine: grabl-ubuntu-1910-v20200508
         type: foreground
         script: |
           echo "workflow performance: test-performance-big"
@@ -115,7 +115,7 @@ build:
 release:
   validation:
     job:
-      machine: ubuntu-1910
+      machine: grabl-ubuntu-1910-v20200508
       type: foreground
       script: |
         bazel run @graknlabs_build_tools//ci:release-validate-deps -- graknlabs_common graknlabs_graql graknlabs_protocol
@@ -124,6 +124,6 @@ release:
     execution:
   bump:
     job:
-      machine: ubuntu-1910
+      machine: grabl-ubuntu-1910-v20200508
       type: foreground
       script: bazel run @graknlabs_build_tools//ci:version-bump
