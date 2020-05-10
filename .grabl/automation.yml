@@ -115,15 +115,26 @@ build:
 release:
   validation:
     job:
-      machine: grabl-ubuntu-1910
-      type: foreground
-      script: |
-        bazel run @graknlabs_build_tools//ci:release-validate-deps -- graknlabs_common graknlabs_graql graknlabs_protocol
+      validate-dependencies:
+        machine: grabl-ubuntu-1910
+        type: foreground
+        script: |
+          echo "workflow validation: validate-dependencies"
+          # bazel run @graknlabs_build_tools//ci:release-validate-deps -- graknlabs_common graknlabs_graql graknlabs_protocol
   deployment:
-    jobs:
-    execution:
+    job:
+      deploy-workbase:
+        machine: grabl-ubuntu-1910
+        type: foreground
+        script: |
+          echo "workflow deployment: deploy-workbase"
+          # bazel run @graknlabs_build_tools//ci:release-validate-deps -- graknlabs_common graknlabs_graql graknlabs_protocol
   bump:
     job:
-      machine: grabl-ubuntu-1910
-      type: foreground
-      script: bazel run @graknlabs_build_tools//ci:version-bump
+      bump-version:
+        machine: grabl-ubuntu-1910
+        type: foreground
+        script: |
+          echo "workflow bump: bump-version"
+          # bazel run @graknlabs_build_tools//ci:version-bump
+
