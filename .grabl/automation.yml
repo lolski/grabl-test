@@ -6,7 +6,6 @@ build:
         type: background
         timeout: "18000"
         script: |
-          git clone https://github.com/lolski/grakn.git
           cd grakn
           git checkout f04512e47c6b8b4ed87239870d07b3ce7f2c58ee
           cp rootCA.jks /tmp/rootCA.jks
@@ -26,7 +25,6 @@ build:
         type: foreground
         timeout: "18000"
         script: |
-          git clone https://github.com/lolski/simulation.git
           cd simulation
           git checkout f1f3caabe1fbdedd6382a8216c689c93a7ca0094
           cp rootCA.jks /tmp/rootCA.jks
