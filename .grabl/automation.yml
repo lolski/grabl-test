@@ -6,6 +6,7 @@ build:
         type: background
         timeout: "18000"
         script: |
+          # git clone https://github.com/lolski/grakn.git
           cd grakn
           git checkout f04512e47c6b8b4ed87239870d07b3ce7f2c58ee
           cp rootCA.jks /tmp/rootCA.jks
@@ -17,16 +18,18 @@ build:
             ./grakn server start -- \
             --tracing-enabled \
             --tracing-uri $GRABL_URI \
-            --tracing-username lriuui0x0 \
-            --tracing-access-token T30qo2SGRfqYwbdZndtpzVdAEqi4TBEd
+            --tracing-username lolski \
+            --tracing-access-token $GRABL_TOKEN
           export GRABL_PERFORMANCE_RUN_GRAKN_URI="${HOSTNAME}:48555"
       test-performance-big:
         machine: grabl-ubuntu-1910-cache-test-performance-big
         type: foreground
         timeout: "18000"
         script: |
+          # git clone https://github.com/lolski/simulation.git
           cd simulation
-          git checkout f1f3caabe1fbdedd6382a8216c689c93a7ca0094
+          git fetch origin tracing-test
+          git checkout 24fd98e752ed57acbb42d875e8442bb95b1642bb
           cp rootCA.jks /tmp/rootCA.jks
           bazel run //:simulation -- \
             --keyspace world \
@@ -35,8 +38,8 @@ build:
             --org $GRABL_OWNER \
             --repo $GRABL_REPO \
             --commit $GRABL_COMMIT \
-            --username lriuui0x0 \
-            --api-token T30qo2SGRfqYwbdZndtpzVdAEqi4TBEd \
+            --username lolski \
+            --api-token $GRABL_TOKEN \
             --iterations 5 \
             --seed 1 || true
           sleep 5h
