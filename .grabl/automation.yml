@@ -2,13 +2,13 @@ build:
   performance:
     jobs:
       run-grakn:
-        machine: grabl-ubuntu-1910-cache-run-grakn
+        machine: grabl-ubuntu-2004
         type: background
         timeout: "18000"
         script: |
           echo "hello run-grakn"
       test-performance-big:
-        machine: grabl-ubuntu-1910-cache-test-performance-big
+        machine: grabl-ubuntu-2004
         type: foreground
         timeout: "18000"
         script: |
