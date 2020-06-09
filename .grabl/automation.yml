@@ -30,7 +30,7 @@ build:
           git clone https://github.com/lolski/simulation.git
           cd simulation
           git fetch origin tracing-test
-          git checkout 24fd98e752ed57acbb42d875e8442bb95b1642bb
+          git checkout 4e2d08f5c0652415a7fed84e0823361b6f902388
           cp rootCA.jks /tmp/rootCA.jks
           bazel run //:simulation -- \
             --keyspace world \
@@ -42,6 +42,7 @@ build:
             --username lolski \
             --api-token $GRABL_TOKEN \
             --iterations 5 \
+            -f 1
             --seed 1 || true
           sleep 5h
     execution:
