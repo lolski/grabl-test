@@ -10,7 +10,7 @@ build:
           cd grakn
           git checkout f04512e47c6b8b4ed87239870d07b3ce7f2c58ee
           cp rootCA.jks /tmp/rootCA.jks
-          bazel build //:assemble-linux-targz
+          bazel build --config=rbe //:assemble-linux-targz
           mkdir dist
           tar -xf ./bazel-bin/grakn-core-all-linux.tar.gz -C ./dist/
           cd ./dist/grakn-core-all-linux/
@@ -32,7 +32,7 @@ build:
           git fetch origin tracing-test
           git checkout 4e2d08f5c0652415a7fed84e0823361b6f902388
           cp rootCA.jks /tmp/rootCA.jks
-          bazel run //:simulation -- \
+          bazel run --config=rbe //:simulation -- \
             --keyspace world \
             --grakn-uri $GRABL_PERFORMANCE_RUN_GRAKN_URI \
             --tracing-uri $GRABL_URI \
