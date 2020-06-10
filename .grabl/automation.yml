@@ -46,7 +46,7 @@ build:
             --username lolski \
             --api-token $GRABL_TOKEN \
             --iterations 5 \
-            -f 1
+            -f 1 \
             --seed 1 || true
           sleep 5h
     execution:
