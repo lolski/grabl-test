@@ -23,7 +23,7 @@ build:
           #   --tracing-username lolski \
           #   --tracing-access-token $GRABL_TOKEN
           ./grakn server start
-          export GRABL_EXPORTED_GRAKN_URI="${HOSTNAME}:48555"
+          export GRABL_EXPORT_GRAKN_URI="${HOSTNAME}:48555"
       test-performance-big:
         machine: grabl-ubuntu-2004
         type: foreground
@@ -38,7 +38,7 @@ build:
           cp rootCA.jks /tmp/rootCA.jks
           bazel run --config=rbe //:simulation -- \
             --keyspace world \
-            --grakn-uri $GRABL_EXPORTED_GRAKN_URI \
+            --grakn-uri $GRABL_EXPORT_GRAKN_URI \
             --tracing-uri $GRABL_URI \
             --org $GRABL_OWNER \
             --repo $GRABL_REPO \
