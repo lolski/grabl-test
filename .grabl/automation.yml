@@ -6,7 +6,6 @@ build:
         type: background
         timeout: "18000"
         script: |
-          jfiroejf
           mkdir -p ~/.config/gcloud/
           echo $GRABL_RBE_CREDENTIAL > ~/.config/gcloud/application_default_credentials.json
           git clone https://github.com/lolski/grakn.git
