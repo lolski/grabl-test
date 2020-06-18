@@ -6,6 +6,6 @@ build:
         type: background
         timeout: "18000"
         script: |
-          iroejoierj
+          echo 'hi'
     execution:
       - run-grakn
