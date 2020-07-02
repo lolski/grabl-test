@@ -46,7 +46,7 @@ build:
             --org $GRABL_OWNER \
             --repo $GRABL_REPO \
             --commit $GRABL_COMMIT \
-            --username VladGan \
+            --username lolski \
             --api-token $GRABL_TOKEN \
             --iterations 5 \
             --seed 1 \
